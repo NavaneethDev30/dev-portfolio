@@ -1,65 +1,179 @@
-import Image from "next/image";
+import LightRays from '@/components/LightRays';
+import Image from 'next/image';
+import LogoLoop from '@/components/LogoLoop';
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
+import ScrollReveal from '@/components/ScrollReveal';
+import { projects } from "@/lib/data";
+import ProjectCard from "@/components/ProjectCard";
 
-export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+const techLogos = [
+  { node: <SiReact />, title: "React", href: "https://react.dev" },
+  { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
+  { node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+  { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+];
+
+const skillLogos = [
+  { src: "/skills/javascript.svg", alt: "JavaScript", href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+  { src: "/skills/python.svg", alt: "Python", href: "https://www.python.org/" },
+  { src: "/skills/html5.svg", alt: "HTML5", href: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+  { src: "/skills/css3.svg", alt: "CSS3", href: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+  { src: "/skills/tailwindcss.svg", alt: "Tailwind CSS", href: "https://tailwindcss.com/" },
+  { src: "/skills/express.svg", alt: "Express.js", href: "https://expressjs.com/" },
+  { src: "/skills/nodedotjs.svg", alt: "Node.js", href: "https://nodejs.org/" },
+  { src: "/skills/mongodb.svg", alt: "MongoDB", href: "https://www.mongodb.com/" },
+  { src: "/skills/react.svg", alt: "React", href: "https://react.dev/" },
+  { src: "/skills/nextdotjs.svg", alt: "Next.js", href: "https://nextjs.org/" },
+  { src: "/skills/figma.svg", alt: "Figma", href: "https://www.figma.com/" },
+  { src: "/skills/git.svg", alt: "Git", href: "https://git-scm.com/" },
+  { src: "/skills/github.svg", alt: "GitHub", href: "https://github.com/" },
+  { src: "/skills/mysql.svg", alt: "MySQL", href: "https://www.mysql.com/" },
+  { src: "/skills/powerbi.svg", alt: "Power BI", href: "https://powerbi.microsoft.com/" },
+];
+
+
+function Page(){
+  return(
+    <main >
+  {/* HERO SECTION */}
+      <section className="relative min-h-screen overflow-hidden">
+
+        <LightRays
+          raysOrigin="top-offset"
+          raysColor="#ffffff"
+          raysSpeed={1}
+          lightSpread={0.4}
+          rayLength={6}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0}
+          distortion={0}
+          className="custom-rays"
+          pulsating={false}
+          fadeDistance={1}
+          saturation={1}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+
+        <div className="absolute inset-0 z-10 mt-[-30]">
+          <div className="grid grid-cols-2 h-full items-center px-20">
+
+            {/* LEFT SIDE */}
+            <div className="text-white">
+
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 mb-8">
+                 Hi, I'm 
+              </div>
+
+              <h1 className="text-8xl font-black leading-none">
+                NAVANEETH
+                <br />
+                <span className="text-zinc-300">DEV</span>
+              </h1>
+
+              <h2 className="text-3xl mt-6 font-medium text-zinc-300">
+                Full Stack Developer & AI Engineer
+              </h2>
+
+              <p className="mt-6 max-w-xl text-lg text-zinc-400 leading-relaxed">
+                I build modern web applications, AI-powered solutions,
+                and scalable digital products. Passionate about creating
+                beautiful user experiences and solving real-world problems
+                with technology.
+              </p>
+
+              {/* Buttons */}
+              <div className="flex gap-4 mt-8">
+                <button className="px-6 py-3 bg-white text-black rounded-xl font-medium hover:scale-105 transition">
+                  View Projects
+                </button>
+
+                <button className="px-6 py-3 border border-white/20 rounded-xl hover:bg-white/5 transition">
+                  Resume
+                </button>
+              </div>
+            
+            </div>
+
+            {/* RIGHT SIDE */}
+            <div className="relative flex justify-center items-end h-full">
+
+              {/* Glow */}
+              <div className="absolute w-[600px] h-[600px] rounded-full bg-blue-500/10 blur-3xl"></div>
+
+              <Image
+                src="/landingpagepic.png"
+                alt="profile"
+                width={1200}
+                height={1600}
+                priority
+                className="relative z-10 h-[120vh] w-auto object-contain"
+              />
+
+            </div>
+
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+
+      </section>
+
+  <div className=' min-h-screen text-white'>
+    <div className='flex items-center justify-center text-6xl font-semibold mb-10'>
+      <ScrollReveal
+        baseOpacity={0.1}
+        enableBlur
+        baseRotation={3}
+        blurStrength={4}
+        wordAnimationEnd="bottom center"
+        rotationEnd="bottom center"
+      >
+        Skills and Technologies
+      </ScrollReveal>
+      
+
     </div>
-  );
+    
+    <div style={{ height: '200px', position: 'relative', overflow: 'hidden'}}>
+      {/* Basic horizontal loop */}
+      <LogoLoop
+        logos={skillLogos}
+        speed={100}
+        direction="left"
+        logoHeight={60}
+        gap={50}
+        hoverSpeed={0}
+        scaleOnHover
+        fadeOut
+        fadeOutColor="#000000"
+        ariaLabel="Technology partners"
+      />
+      
+      {/* Vertical loop with deceleration on hover */}
+  
+    </div>
+    <div className='flex items-center justify-center text-6xl font-semibold mb-10 mt-20'>
+      <ScrollReveal
+        baseOpacity={0.1}
+        enableBlur
+        baseRotation={3}
+        blurStrength={4}
+        wordAnimationEnd="bottom center"
+        rotationEnd="bottom center"
+      >
+        Projects
+      </ScrollReveal>
+    </div>
+
+  <div className="grid md:grid-cols-2 gap-8 px-8">
+  {projects.map((project) => (
+    <ProjectCard
+      key={project.title}
+      {...project}
+    />
+  ))}
+</div>
+  </div>
+    </main>
+  )
 }
+
+export default Page;
