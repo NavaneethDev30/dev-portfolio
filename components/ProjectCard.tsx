@@ -7,9 +7,9 @@ type ProjectCardProps={
     description:string,
     video:string,
     tech:string[],
-    github:string,
-    live:string,
-    category:string
+    github?:string,
+    live?:string,
+    category?:string
 }
 
 const ProjectCard = ({ title, description, video, tech, github, live, category }: ProjectCardProps) => {
@@ -57,21 +57,25 @@ const ProjectCard = ({ title, description, video, tech, github, live, category }
         {/* Links */}
         <div className="flex gap-4 mt-8">
 
-          <a
-            href={github}
-            target="_blank"
-            className="px-5 py-2 rounded-xl border border-white/20 text-white hover:bg-white hover:text-black transition"
-          >
-            GitHub
-          </a>
+          {github && (
+            <a
+              href={github}
+              target="_blank"
+              className="px-5 py-2 rounded-xl border border-white/20 text-white hover:bg-white hover:text-black transition"
+            >
+              GitHub
+            </a>
+          )}
 
-          <a
-            href={live}
-            target="_blank"
-            className="px-5 py-2 rounded-xl bg-cyan-500 text-black font-semibold hover:bg-cyan-400 transition"
-          >
-            Live Demo
-          </a>
+          {live && (
+            <a
+              href={live}
+              target="_blank"
+              className="px-5 py-2 rounded-xl bg-cyan-500 text-black font-semibold hover:bg-cyan-400 transition"
+            >
+              Live Demo
+            </a>
+          )}
 
         </div>
 
