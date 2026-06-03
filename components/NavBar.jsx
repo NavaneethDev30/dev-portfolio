@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 function NavBar() {
   return (
@@ -14,7 +15,7 @@ function NavBar() {
 >
 <div className="max-w-7xl mx-auto h-full flex justify-between items-center text-white">
 
-  <a href="" className="flex items-center gap-3 ml-[-26]">
+  <a href="/" className="flex items-center gap-3 ml-[-26]">
     <Image
       src="/pp.png"
       alt="profile-pic"
@@ -34,9 +35,12 @@ function NavBar() {
     <a href="#contact">Contact</a>
   </div>
 
+<Link href="/personal">
   <button className="px-6 py-3 border border-white/20 rounded-xl">
-    Resume
+    Personal
   </button>
+</Link>
+
 
 </div>
 </nav>

@@ -40,48 +40,50 @@ const ScrollReveal = ({
 
     const scroller = scrollContainerRef && scrollContainerRef.current ? scrollContainerRef.current : window;
 
-    gsap.fromTo(
-      el,
-      { transformOrigin: '0% 50%', rotate: baseRotation },
-      {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        el,
+        { transformOrigin: '0% 50%', rotate: baseRotation },
+        {
+          ease: 'none',
+          rotate: 0,
+          scrollTrigger: {
+            trigger: el,
+            scroller,
+            start: 'top bottom',
+            end: rotationEnd,
+            scrub: true
+          }
+        }
+      );
+
+      const wordElements = el.querySelectorAll('.word');
+
+      const fromProps = { opacity: baseOpacity, y: 20, willChange: 'opacity, transform' };
+      const toProps = {
         ease: 'none',
-        rotate: 0,
+        opacity: 1,
+        y: 0,
+        stagger: 0.05,
         scrollTrigger: {
           trigger: el,
           scroller,
-          start: 'top bottom',
-          end: rotationEnd,
+          start: 'top bottom-=20%',
+          end: wordAnimationEnd,
           scrub: true
         }
+      };
+
+      if (enableBlur) {
+        fromProps.filter = `blur(${blurStrength}px)`;
+        toProps.filter = 'blur(0px)';
       }
-    );
 
-    const wordElements = el.querySelectorAll('.word');
-
-    const fromProps = { opacity: baseOpacity, y: 20, willChange: 'opacity, transform' };
-    const toProps = {
-      ease: 'none',
-      opacity: 1,
-      y: 0,
-      stagger: 0.05,
-      scrollTrigger: {
-        trigger: el,
-        scroller,
-        start: 'top bottom-=20%',
-        end: wordAnimationEnd,
-        scrub: true
-      }
-    };
-
-    if (enableBlur) {
-      fromProps.filter = `blur(${blurStrength}px)`;
-      toProps.filter = 'blur(0px)';
-    }
-
-    gsap.fromTo(wordElements, fromProps, toProps);
+      gsap.fromTo(wordElements, fromProps, toProps);
+    });
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ctx.revert();
     };
   }, [scrollContainerRef, enableBlur, baseRotation, baseOpacity, rotationEnd, wordAnimationEnd, blurStrength]);
 

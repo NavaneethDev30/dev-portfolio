@@ -5,6 +5,7 @@ import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/s
 import ScrollReveal from '@/components/ScrollReveal';
 import { projects } from "@/lib/data";
 import ProjectCard from "@/components/ProjectCard";
+import Contact from '@/components/Contact';
 
 const techLogos = [
   { node: <SiReact />, title: "React", href: "https://react.dev" },
@@ -82,14 +83,20 @@ function Page(){
               </p>
 
               {/* Buttons */}
-              <div className="flex gap-4 mt-8">
+              <div  className="flex gap-4 mt-8">
+                <a href="#projects">
                 <button className="px-6 py-3 bg-white text-black rounded-xl font-medium hover:scale-105 transition">
                   View Projects
                 </button>
-
+                </a>
+                <a href="/Resume/NavaneethDev.pdf"
+                 target="_blank" 
+                  rel="noopener noreferrer"
+                >
                 <button className="px-6 py-3 border border-white/20 rounded-xl hover:bg-white/5 transition">
                   Resume
                 </button>
+                </a>
               </div>
             
             </div>
@@ -117,19 +124,20 @@ function Page(){
       </section>
 
   <div className=' min-h-screen text-white'>
-    <div className='flex items-center justify-center text-6xl font-semibold mb-10'>
-      <ScrollReveal
-        baseOpacity={0.1}
-        enableBlur
-        baseRotation={3}
-        blurStrength={4}
-        wordAnimationEnd="bottom center"
-        rotationEnd="bottom center"
-      >
-        Skills and Technologies
-      </ScrollReveal>
-      
-
+    {/* Skills Header with Glass Effect */}
+    <div id='skills' className='w-full bg-white/5 backdrop-blur-md border-y border-white/10 py-12 mb-10 relative z-20'>
+      <div className='flex items-center justify-center text-6xl font-semibold'>
+        <ScrollReveal
+          baseOpacity={0.1}
+          enableBlur
+          baseRotation={3}
+          blurStrength={4}
+          wordAnimationEnd="bottom center"
+          rotationEnd="bottom center"
+        >
+          Skills and Technologies
+        </ScrollReveal>
+      </div>
     </div>
     
     <div style={{ height: '200px', position: 'relative', overflow: 'hidden'}}>
@@ -150,17 +158,20 @@ function Page(){
       {/* Vertical loop with deceleration on hover */}
   
     </div>
-    <div className='flex items-center justify-center text-6xl font-semibold mb-10 mt-20'>
-      <ScrollReveal
-        baseOpacity={0.1}
-        enableBlur
-        baseRotation={3}
-        blurStrength={4}
-        wordAnimationEnd="bottom center"
-        rotationEnd="bottom center"
-      >
-        Projects
-      </ScrollReveal>
+    {/* Projects Header with Glass Effect */}
+    <div id='projects' className='w-full bg-white/5 backdrop-blur-md border-y border-white/10 py-12 mb-16 mt-20 relative z-20'>
+      <div className='flex items-center justify-center text-6xl font-semibold'>
+        <ScrollReveal
+          baseOpacity={0.1}
+          enableBlur
+          baseRotation={3}
+          blurStrength={4}
+          wordAnimationEnd="bottom center"
+          rotationEnd="bottom center"
+        >
+          Projects
+        </ScrollReveal>
+      </div>
     </div>
 
   <div className="grid md:grid-cols-2 gap-8 px-8">
@@ -171,7 +182,12 @@ function Page(){
     />
   ))}
 </div>
+<div id='contact'>
+<Contact/>
+</div>
   </div>
+  <div className="w-3/4 h-px bg-gray-500/50 my-6 ml-50 flex justify-center items-center"></div>
+  <div className='text-white flex justify-center align-center w-full h-16'>© 2026 Navaneeth Dev G. All Rights Reserved.</div>
     </main>
   )
 }
