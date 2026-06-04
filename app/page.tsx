@@ -55,27 +55,27 @@ function Page(){
           saturation={1}
         />
 
-        <div className="absolute inset-0 z-10 mt-[-30]">
-          <div className="grid grid-cols-2 h-full items-center px-20">
+        <div className="absolute inset-0 z-10 pt-20 lg:pt-0 overflow-y-auto overflow-x-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2 h-full items-center px-6 lg:px-20 pt-4 lg:pt-0 gap-0 pb-20 lg:pb-0">
 
-            {/* LEFT SIDE */}
-            <div className="text-white">
+            {/* LEFT SIDE (Text - Now ordered 2nd on mobile, 1st on desktop) */}
+            <div className="text-white flex flex-col justify-center h-full order-2 lg:order-1">
 
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 mb-8 w-max">
                  Hi, I'm 
               </div>
 
-              <h1 className="text-8xl font-black leading-none">
+              <h1 className="text-5xl lg:text-8xl font-black leading-none">
                 NAVANEETH
                 <br />
                 <span className="text-zinc-300">DEV</span>
               </h1>
 
-              <h2 className="text-3xl mt-6 font-medium text-zinc-300">
+              <h2 className="text-xl lg:text-3xl mt-6 font-medium text-zinc-300">
                 Full Stack Developer & AI Engineer
               </h2>
 
-              <p className="mt-6 max-w-xl text-lg text-zinc-400 leading-relaxed">
+              <p className="mt-6 max-w-xl text-base lg:text-lg text-zinc-400 leading-relaxed">
                 I build modern web applications, AI-powered solutions,
                 and scalable digital products. Passionate about creating
                 beautiful user experiences and solving real-world problems
@@ -83,9 +83,9 @@ function Page(){
               </p>
 
               {/* Buttons */}
-              <div  className="flex gap-4 mt-8">
+              <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <a href="#projects">
-                <button className="px-6 py-3 bg-white text-black rounded-xl font-medium hover:scale-105 transition">
+                <button className="w-full sm:w-auto px-6 py-3 bg-white text-black rounded-xl font-medium hover:scale-105 transition">
                   View Projects
                 </button>
                 </a>
@@ -93,7 +93,7 @@ function Page(){
                  target="_blank" 
                   rel="noopener noreferrer"
                 >
-                <button className="px-6 py-3 border border-white/20 rounded-xl hover:bg-white/5 transition">
+                <button className="w-full sm:w-auto px-6 py-3 border border-white/20 rounded-xl hover:bg-white/5 transition">
                   Resume
                 </button>
                 </a>
@@ -101,11 +101,11 @@ function Page(){
             
             </div>
 
-            {/* RIGHT SIDE */}
-            <div className="relative flex justify-center items-end h-full">
+            {/* RIGHT SIDE (Image - Now ordered 1st on mobile, 2nd on desktop) */}
+            <div className="relative flex justify-center items-end h-[50vh] lg:h-full  order-1 lg:order-2">
 
               {/* Glow */}
-              <div className="absolute w-[600px] h-[600px] rounded-full bg-blue-500/10 blur-3xl"></div>
+              <div className="absolute w-[300px] h-[400px] lg:w-[600px] lg:h-[600px] rounded-full bg-blue-500/10 blur-3xl"></div>
 
               <Image
                 src="/landingpagepic.png"
@@ -113,7 +113,7 @@ function Page(){
                 width={1200}
                 height={1600}
                 priority
-                className="relative z-10 h-[120vh] w-auto object-contain"
+                className="relative z-10 h-full w-auto object-contain object-bottom [-webkit-mask-image:linear-gradient(to_top,transparent,black_20%)] [mask-image:linear-gradient(to_top,transparent,black_20%)] lg:[-webkit-mask-image:none] lg:[mask-image:none]"
               />
 
             </div>
@@ -187,7 +187,7 @@ function Page(){
 </div>
   </div>
   <div className="w-3/4 h-px bg-gray-500/50 my-6 ml-50 flex justify-center items-center"></div>
-  <div className='text-white flex justify-center align-center w-full h-16'>© 2026 Navaneeth Dev G. All Rights Reserved.</div>
+  <div className='text-gray-300 flex justify-center align-center w-full h-16'>© 2026 Navaneeth Dev G. All Rights Reserved.</div>
     </main>
   )
 }
