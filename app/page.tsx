@@ -7,6 +7,8 @@ import { projects } from "@/lib/data";
 import ProjectCard from "@/components/ProjectCard";
 import Contact from '@/components/Contact';
 
+export const dynamic = 'force-static';
+
 const techLogos = [
   { node: <SiReact />, title: "React", href: "https://react.dev" },
   { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
