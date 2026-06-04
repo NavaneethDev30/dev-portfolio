@@ -30,11 +30,11 @@ export const projects = [
     category: "AI Project",
   },
   {
-    title:"Amazon Clone",
-    description:"Developed an Amazon-inspired e-commerce platform with product browsing, cart management, and checkout functionality using HTML, CSS, and JavaScript.",
-    video:"/videos/amazon-project.mp4",
-    tech:["HTML","CSS","Javascript"],
-    github:"https://github.com/NavaneethDev30/javascript-amazon-clone",
-    live:"https://javascript-amazon-clone-yln4.vercel.app/index.html",
+    title:"Personalized Learning path Generator",
+    description:"Built and styled the entire UI using Next.js and Tailwind CSS, including the course creation and interactive quizinterface",
+    video:"/videos/per-lear-path generator.mp4",
+    tech:["Next JS","Taiwind","Figma"],
+    github:"https://github.com/NavaneethDev30/personalized-learning-path-generator",
+    live:"https://personalized-learning-path-generato-virid.vercel.app/",
   }
 ];
