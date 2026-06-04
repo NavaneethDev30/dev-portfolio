@@ -91,7 +91,7 @@ function Page(){
                   View Projects
                 </button>
                 </a>
-                <a href="/Resume/NavaneethDev.pdf"
+                <a href="/Resume/Navaneeth-Dev-G.pdf"
                  target="_blank" 
                   rel="noopener noreferrer"
                 >
