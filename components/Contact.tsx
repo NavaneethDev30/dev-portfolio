@@ -48,8 +48,8 @@ const Contact = () => {
                 </div>
             </div>
             
-            <div className="flex items-center justify-center">
-                <div className='w-[400px] h-[500px] '>
+            <div className="flex items-center justify-center w-full">
+                <div className='w-full max-w-[400px] h-[400px] md:h-[500px] '>
                     <ReflectiveCard
                         overlayColor="rgba(0, 0, 0, 0.2)"
                         blurStrength={12}

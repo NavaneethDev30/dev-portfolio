@@ -126,7 +126,7 @@ function Page(){
   <div className=' min-h-screen text-white'>
     {/* Skills Header with Glass Effect */}
     <div id='skills' className='w-full bg-white/5 backdrop-blur-md border-y border-white/10 py-12 mb-10 relative z-20'>
-      <div className='flex items-center justify-center text-6xl font-semibold'>
+      <div className='flex items-center justify-center text-3xl md:text-6xl font-semibold text-center px-4'>
         <ScrollReveal
           baseOpacity={0.1}
           enableBlur
@@ -160,7 +160,7 @@ function Page(){
     </div>
     {/* Projects Header with Glass Effect */}
     <div id='projects' className='w-full bg-white/5 backdrop-blur-md border-y border-white/10 py-12 mb-16 mt-20 relative z-20'>
-      <div className='flex items-center justify-center text-6xl font-semibold'>
+      <div className='flex items-center justify-center text-4xl md:text-6xl font-semibold text-center px-4'>
         <ScrollReveal
           baseOpacity={0.1}
           enableBlur
@@ -174,7 +174,7 @@ function Page(){
       </div>
     </div>
 
-  <div className="grid md:grid-cols-2 gap-8 px-8">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-8 overflow-hidden">
   {projects.map((project) => (
     <ProjectCard
       key={project.title}
@@ -186,7 +186,7 @@ function Page(){
 <Contact/>
 </div>
   </div>
-  <div className="w-3/4 h-px bg-gray-500/50 my-6 ml-50 flex justify-center items-center"></div>
+  <div className="w-[90%] md:w-3/4 h-px bg-gray-500/50 my-6 mx-auto flex justify-center items-center"></div>
   <div className='text-gray-300 flex justify-center align-center w-full h-16'>© 2026 Navaneeth Dev G. All Rights Reserved.</div>
     </main>
   )
