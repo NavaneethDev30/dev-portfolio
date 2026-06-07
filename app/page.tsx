@@ -190,6 +190,9 @@ function Page(){
   </div>
   <div className="w-[90%] md:w-3/4 h-px bg-gray-500/50 my-6 mx-auto flex justify-center items-center"></div>
   <div className='text-gray-300 flex justify-center align-center w-full h-16'>© 2026 Navaneeth Dev G. All Rights Reserved.</div>
+  <div>
+    <Contact/>
+  </div>
     </main>
   )
 }
