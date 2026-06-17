@@ -27,7 +27,10 @@ export const submitContactForm = async (req, res, next) => {
     // Configure Nodemailer transporter
     // Assumes using Gmail. If using another service, update the 'service' property.
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      family: 4, // Force IPv4 to prevent ENETUNREACH on Render
       auth: {
         user: EMAIL_USER,
         pass: EMAIL_PASS,
