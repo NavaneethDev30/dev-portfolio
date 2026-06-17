@@ -2,7 +2,7 @@ import express from "express"
 import { PORT,NODE_ENV } from "./config/env.js";
 import UserRoute from "./routes/auth.users.js";
 import authRouter from "./routes/auth.route.js";
-import MessageRoute from "./routes/message.auth.js";
+import ContactRoute from "./routes/contact.auth.js";
 import connectToDatabase from "./database/mongodb.js";
 import errorMiddleware from "./middleware/error.middleware.js";
 import cookieParser from "cookie-parser";
@@ -18,7 +18,7 @@ app.use(arcjetMiddleware);
 
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', UserRoute);
-app.use('/api/v1/messages', MessageRoute);
+app.use('/api/v1/contact', ContactRoute);
 
 app.use(errorMiddleware)
 

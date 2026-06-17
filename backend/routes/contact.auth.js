@@ -1,7 +1,8 @@
 import { Router } from "express";
+import { submitContactForm } from "../controllers/contact.controller.js";
 
-const MessageRoute = Router();
+const ContactRoute = Router();
 
-MessageRoute.get('/', (req, res) => res.send({ title: "Get the users" }));
+ContactRoute.post('/', submitContactForm);
 
-export default MessageRoute;
+export default ContactRoute;

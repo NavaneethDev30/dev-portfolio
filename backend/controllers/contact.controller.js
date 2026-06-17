@@ -28,6 +28,9 @@ export const submitContactForm = async (req, res, next) => {
         user: EMAIL_USER,
         pass: EMAIL_PASS,
       },
+      tls: {
+        rejectUnauthorized: false
+      }
     });
 
     // HTML Email Template for the sender (Acknowledgement)
