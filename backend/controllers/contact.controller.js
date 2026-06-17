@@ -1,6 +1,10 @@
 import nodemailer from "nodemailer";
+import dns from "dns";
 import Contact from "../models/contact.model.js";
 import { EMAIL_USER, EMAIL_PASS } from "../config/env.js";
+
+// Force Node.js to prefer IPv4 over IPv6 to prevent ENETUNREACH errors with Gmail
+dns.setDefaultResultOrder('ipv4first');
 
 export const submitContactForm = async (req, res, next) => {
   try {
