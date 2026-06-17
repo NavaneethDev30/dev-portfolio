@@ -9,7 +9,10 @@ import cookieParser from "cookie-parser";
 import arcjetMiddleware from "./middleware/arcjet.middleware.js";
 
 
+import cors from "cors";
+
 const app=express();
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
