@@ -1,8 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { useState } from 'react';
-import axios from 'axios';
+import { useEffect, useRef, useState } from 'react';
 import { Activity, Fingerprint, Handshake } from 'lucide-react';
 import './ReflectiveCard.css';
 
@@ -57,14 +55,25 @@ const ReflectiveCard = ({
     setStatus({ loading: true, success: false, error: '' });
     
     try {
-      const response = await axios.post("https://backend-portfolio-guhe.onrender.com/api/v1/contact", formData);
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
       
       setStatus({ loading: false, success: true, error: '' });
       setFormData({ name: '', email: '', message: '' });
       setTimeout(() => setStatus(s => ({ ...s, success: false })), 3000);
     } catch (err) {
-      const errorMessage = err.response?.data?.error || 'Failed to send or Network error';
-      setStatus({ loading: false, success: false, error: errorMessage });
+      setStatus({ loading: false, success: false, error: err.message || 'Network error' });
     }
   };
 
@@ -160,9 +169,15 @@ const ReflectiveCard = ({
 
         <div className="card-footer">
           <div className="id-section">
-            <span className="label text-white !opacity-100">Drop Your Message</span>
+            <span className="label text-white !opacity-100 mb-2 block">Drop Your Message</span>
             <span className="value">
-              <input type="text" className="outline-none bg-transparent w-full text-white/90 border-b border-transparent focus:border-white/30 transition-colors" placeholder="Send your Message" value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} />
+              <textarea 
+                className="outline-none bg-black/20 w-full text-white/90 border border-white/10 rounded-xl p-3 focus:border-white/30 transition-colors resize-none" 
+                placeholder="Send your Message" 
+                rows="3"
+                value={formData.message} 
+                onChange={(e) => setFormData({...formData, message: e.target.value})} 
+              />
             </span>
           </div>
 
