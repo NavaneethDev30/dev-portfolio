@@ -55,7 +55,7 @@ const ReflectiveCard = ({
     setStatus({ loading: true, success: false, error: '' });
     
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('/api/v1/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,6 +67,7 @@ const ReflectiveCard = ({
 
       if (!response.ok) {
         throw new Error(data.error || 'Failed to send message');
+        console.log(data.error)
       }
       
       setStatus({ loading: false, success: true, error: '' });
