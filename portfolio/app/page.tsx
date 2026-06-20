@@ -6,7 +6,6 @@ import ScrollReveal from '@/components/ScrollReveal';
 import { projects } from "@/lib/data";
 import ProjectCard from "@/components/ProjectCard";
 import Contact from '@/components/Contact';
-import ProtectedRoute from '@/components/ProtectedRoute';
 
 export const dynamic = 'force-static';
 
@@ -38,8 +37,7 @@ const skillLogos = [
 
 function Page(){
   return(
-    <ProtectedRoute>
-      <main>
+    <main>
   {/* HERO SECTION */}
       <section className="relative min-h-screen overflow-hidden">
 
@@ -193,7 +191,6 @@ function Page(){
   <div className="w-[90%] md:w-3/4 h-px bg-gray-500/50 my-6 mx-auto flex justify-center items-center"></div>
   <div className='text-gray-300 flex justify-center align-center w-full h-16'>© 2026 Navaneeth Dev G. All Rights Reserved.</div>
     </main>
-    </ProtectedRoute>
   )
 }
 
