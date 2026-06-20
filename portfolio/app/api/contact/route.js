@@ -1,7 +1,5 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 import { NextResponse } from 'next/server';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req) {
   try {
@@ -14,20 +12,32 @@ export async function POST(req) {
       );
     }
 
-    if (!process.env.RESEND_API_KEY) {
-      console.error('RESEND_API_KEY is not configured');
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error('Email credentials are not configured');
       return NextResponse.json(
         { error: 'Server configuration error' },
         { status: 500 }
       );
     }
 
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+      tls: {
+        rejectUnauthorized: false
+      }
+    });
+
     // Send emails simultaneously using Promise.all
-    const [adminResponse, userResponse] = await Promise.all([
+    await Promise.all([
       // 1. Notification email to you
-      resend.emails.send({
-        from: 'onboarding@resend.dev',
-        to: 'navaneethdev33@gmail.com', // Your verified email
+      transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER, // Your verified email
+        replyTo: email, // Set the sender's email for replies
         subject: `New Portfolio Message from ${name}`,
         html: `
           <h3>New Contact Form Submission</h3>
@@ -40,9 +50,8 @@ export async function POST(req) {
         `,
       }),
       // 2. Acknowledgement email to the user
-      // NOTE: On Resend free tier, this might fail if the user's email isn't verified.
-      resend.emails.send({
-        from: 'onboarding@resend.dev',
+      transporter.sendMail({
+        from: process.env.EMAIL_USER,
         to: email, 
         subject: 'Thank you for contacting me!',
         html: `
@@ -58,15 +67,6 @@ export async function POST(req) {
         `,
       })
     ]);
-
-    // Check if either failed
-    if (adminResponse.error || userResponse.error) {
-      console.error("Resend API Error:", adminResponse.error || userResponse.error);
-      return NextResponse.json(
-        { error: adminResponse.error?.message || userResponse.error?.message || 'Failed to send emails' },
-        { status: 500 }
-      );
-    }
 
     return NextResponse.json(
       { success: true, message: 'Message sent successfully!' },

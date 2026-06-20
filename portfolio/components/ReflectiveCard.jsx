@@ -55,7 +55,7 @@ const ReflectiveCard = ({
     setStatus({ loading: true, success: false, error: '' });
     
     try {
-      const response = await fetch('/api/v1/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
