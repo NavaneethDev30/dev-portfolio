@@ -74,14 +74,14 @@ function Page(){
               </h1>
 
               <h2 className="text-xl lg:text-3xl mt-6 font-medium text-zinc-300">
-                Full Stack Developer & AI Engineer
+                Full Stack Developer & Web Designer
               </h2>
 
               <p className="mt-6 max-w-xl text-base lg:text-lg text-zinc-400 leading-relaxed">
-                I build modern web applications, AI-powered solutions,
+                I build modern web applications, responsive web designs,
                 and scalable digital products. Passionate about creating
-                beautiful user experiences and solving real-world problems
-                with technology.
+                beautiful user experiences as a web designer and solving
+                real-world problems with technology.
               </p>
 
               {/* Buttons */}

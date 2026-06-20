@@ -1,6 +1,16 @@
 import nodemailer from 'nodemailer';
 import { NextResponse } from 'next/server';
 
+const OWNER_EMAIL = 'navaneethdev33@gmail.com';
+
+const escapeHtml = (value) =>
+  String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
 export async function POST(req) {
   try {
     const { name, email, message } = await req.json();
@@ -31,35 +41,39 @@ export async function POST(req) {
       }
     });
 
-    // Send emails simultaneously using Promise.all
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeMessage = escapeHtml(message).replace(/\n/g, '<br/>');
+
     await Promise.all([
-      // 1. Notification email to you
+      // Notification email to you.
       transporter.sendMail({
         from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER, // Your verified email
-        replyTo: email, // Set the sender's email for replies
+        to: OWNER_EMAIL,
+        replyTo: email,
         subject: `New Portfolio Message from ${name}`,
         html: `
-          <h3>New Contact Form Submission</h3>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
+          <h3>You got a new portfolio message</h3>
+          <p><strong>From:</strong> ${safeName}</p>
+          <p><strong>Email:</strong> ${safeEmail}</p>
           <p><strong>Message:</strong></p>
           <blockquote style="border-left: 4px solid #007bff; padding-left: 10px; color: #333;">
-            ${message}
+            ${safeMessage}
           </blockquote>
         `,
       }),
-      // 2. Acknowledgement email to the user
+
+      // Thank-you email to the person who contacted you.
       transporter.sendMail({
         from: process.env.EMAIL_USER,
         to: email, 
         subject: 'Thank you for contacting me!',
         html: `
-          <h3>Hi ${name},</h3>
-          <p>Thank you for reaching out! I have received your message and I'll get back to you as soon as possible 🦇.</p>
+          <h3>Hi ${safeName},</h3>
+          <p>Thank you for contacting me 🦇. I received your message and will get back to you as soon as possible.</p>
           <p><strong>Your Message:</strong></p>
           <blockquote style="border-left: 4px solid #ccc; padding-left: 10px; color: #555;">
-            ${message}
+            ${safeMessage}
           </blockquote>
           <br/>
           <p>Best regards,</p>
