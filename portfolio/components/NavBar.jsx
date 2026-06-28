@@ -42,7 +42,7 @@ function NavBar() {
         </div>
 
         {/* Desktop Button */}
-        <a href="https://dev-cr-portfolio.vercel.app/" className="hidden md:block">
+        <a href="https://dev-cr-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer" className="hidden md:block">
           <button className="px-6 py-3 border border-white/20 rounded-xl hover:bg-white/10 transition">
             Personal
           </button>
@@ -65,11 +65,16 @@ function NavBar() {
           <a href="#skills" onClick={() => setIsOpen(false)} className="text-xl hover:text-cyan-400 transition">Skills</a>
           <a href="#projects" onClick={() => setIsOpen(false)} className="text-xl hover:text-cyan-400 transition">Projects</a>
           <a href="#contact" onClick={() => setIsOpen(false)} className="text-xl hover:text-cyan-400 transition">Contact</a>
-          <Link href="/personal" onClick={() => setIsOpen(false)}>
+          <a 
+            href="https://dev-cr-portfolio.vercel.app/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
+          >
             <button className="px-8 py-3 border border-white/20 rounded-xl mt-4 hover:bg-white/10 transition">
               Personal
             </button>
-          </Link>
+          </a>
         </div>
       )}
     </nav>
