@@ -42,11 +42,11 @@ function NavBar() {
         </div>
 
         {/* Desktop Button */}
-        <Link href="https://dev-cr-portfolio.vercel.app/" className="hidden md:block">
+        <a href="https://dev-cr-portfolio.vercel.app/" className="hidden md:block">
           <button className="px-6 py-3 border border-white/20 rounded-xl hover:bg-white/10 transition">
             Personal
           </button>
-        </Link>
+        </a>
 
         {/* Mobile Hamburger Icon */}
         <button 
