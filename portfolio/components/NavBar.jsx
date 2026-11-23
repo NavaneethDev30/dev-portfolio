@@ -66,7 +66,7 @@ function NavBar() {
           <a href="#projects" onClick={() => setIsOpen(false)} className="text-xl hover:text-cyan-400 transition">Projects</a>
           <a href="#contact" onClick={() => setIsOpen(false)} className="text-xl hover:text-cyan-400 transition">Contact</a>
           <a 
-            href="https://dev-cr-portfolio.vercel.app/" 
+            href="https://dev-cr.vercel.app/" 
             target="_blank" 
             rel="noopener noreferrer"
             onClick={() => setIsOpen(false)}
